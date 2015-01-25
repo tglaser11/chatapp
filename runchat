@@ -1,2 +1,0 @@
-sudo docker run --name redis -d tglaser11/redis
-sudo docker run -w="/src" -d -p 3000:3000 --name chatapp --link redis:localhost-redis tglaser11/node-chatapp

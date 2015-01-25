@@ -27,6 +27,11 @@ var config = {
     workFactor: 5000,
     keylen: 32,
     randomSize: 256
+  },
+  rabbitMQ: {
+	host: 'localhost-rabbitmq',
+	port: '5672',
+	exchange: 'packtchat.log'
   }
 };
 
