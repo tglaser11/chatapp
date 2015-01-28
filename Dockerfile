@@ -10,6 +10,7 @@ COPY . /src
 # Install app dependencies
 RUN cd /src; npm install
 RUN cd /src/static/js; ln -s ../../node_modules/socket.io/node_modules/socket.io-client/socket.io.js
+RUN cd /src; npm install -g bower
 
 EXPOSE  3000
 CMD ["node", "/src/app.js"]
