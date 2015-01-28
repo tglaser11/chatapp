@@ -23,3 +23,49 @@ exports.getRooms = function getRooms(cb){
 		return cb(data);
 	});
 };
+
+exports.addChat = function addChat(chat){
+	client.multi()
+	.zadd('rooms:' + chat.room + ':chats', Date.now(), JSON.stringify(chat))
+	.zadd('users', Date.now(), chat.user.id)
+	.zadd('rooms', Date.now(), chat.room)
+	.exec();
+};
+
+exports.getChat = function getChat(room, cb){
+	client.zrange('rooms:' + room + ':chats', 0, -1, function(err,chats){
+		cb(chats);
+	});
+};
+
+exports.addUserToRoom = function addUserToRoom(user, room){
+	client.multi()
+	.zadd('rooms:' + room, Date.now(), user)
+	.zadd('users', Date.now(), user)
+	.zadd('rooms', Date.now(), room)
+	.set('user:' + user + ':room', room)
+	.exec();
+};
+
+exports.removeUserFromRoom = function removeUserFromRoom(user, room){
+	client.multi()
+	.zrem('rooms:' + room, user)
+	.del('user:' + user + ':room')
+	.exec();
+};
+
+exports.getUserinRoom = function getUsersinRoom(room){
+	return q.Promise(function(resolve, reject, notify){
+		client.zrange('rooms:' + room, 0, -1, function(err, data){
+			var users = [];
+			var loopsleft = data.length;
+			data.forEach(function(u){
+				client.hgetall('user:' + u, function(err, userHash.type){
+					users.push(models.User(u, userHash.name, userHash.type));
+					loopsleft--;
+					if(loopsleft === 0) resolve(users);
+				});
+			});
+		});
+	});
+};
