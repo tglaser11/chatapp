@@ -1,7 +1,7 @@
 var PacktChat = window.PacktChat || {};
 PacktChat.Chat = function(el){
   var $root = $('#' + el),
-  socket = io.connect("http://habt.ice-ix.net:3000/packtchat"),
+  socket = io.connect('/* @echo SOCKETIO_URL */'),
   me = null,
   connected = false;
 
