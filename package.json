@@ -30,7 +30,17 @@
     "q": "1.0.1",
 	"flow-maintained": "0.2.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-concat": "0.4.0",
+    "grunt-contrib-jshint": "0.8.0",
+    "grunt-contrib-nodeunit": "0.4.0",
+    "grunt-contrib-uglify": "0.4.0",
+    "grunt-preprocess": "4.0.0",
+    "istanbul": "0.3.0",
+    "nodeunit": "0.9.0"
+  },
   "repository": "",
   "author": "",
   "license": "BSD"
