@@ -1,3 +1,4 @@
+#!/bin/sh
 sudo docker run --name redis -d tglaser11/redis
 sudo docker run --name rabbitmq -d -p 15672:15672 tglaser11/rabbitmq
 sudo docker run -w="/src" -d -p 3000:3000 --name chatapp --link redis:localhost-redis --link rabbitmq:localhost-rabbitmq tglaser11/node-chatapp
