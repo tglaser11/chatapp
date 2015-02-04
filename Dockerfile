@@ -17,4 +17,5 @@ RUN cd /src; npm install -g bower
 RUN cd /src; bower install --allow-root
 
 EXPOSE  3000
-CMD ["node", "/src/app.js"]
+# CMD ["node", "/src/app.js"]
+CMD server_prep.sh
