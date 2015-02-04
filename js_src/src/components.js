@@ -67,7 +67,7 @@ var ChatList = React.createClass({
       this.props.chats.map(function(chat){
         return  ChatMessage({chat: chat, me: me});
       })
-    )
+    );
   }
 });
 
@@ -86,7 +86,7 @@ var ChatMessage = React.createClass({
       React.DOM.div({className: pull},
         UserView({user: this.props.chat.get('user'), size: 20, useName: true}), React.DOM.small(null, timeAgo)),
       React.DOM.div({className: 'clearfix'}, null)
-    )
+    );
   }
 });
 
@@ -116,7 +116,7 @@ var ChatForm = React.createClass({
         React.DOM.div({className: "col-sm-2"},
           React.DOM.button({className: "btn btn-primary"}, 'Send'))
       )
-    )
+    );
   }
 });
 
@@ -126,9 +126,9 @@ var UserList = React.createClass({
     return React.DOM.ul({className: 'list-unstyled'},
       this.props.collection.map(function(user){
         if (me.id !== user.get('id'))
-          return React.DOM.li(null, UserView({user: user, size: 50, useName: true}))
+          return React.DOM.li(null, UserView({user: user, size: 50, useName: true}));
       })
-    )
+    );
   }
 });
 
@@ -138,6 +138,6 @@ var UserView = React.createClass({
     return React.DOM.div(null,
       React.DOM.img({src: this.props.user.image(this.props.size), className: 'img-circle', title: this.props.user.get('user')}),
       name
-    )
+    );
   }
 });
