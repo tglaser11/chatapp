@@ -4,3 +4,5 @@
 
 source ./set_env.sh dev
 ./node_modules/.bin/grunt
+
+node app.js
