@@ -31,7 +31,7 @@ module.exports = function(grunt) {
         },
         concat:{
             app: {
-                src: ['js_src/src/md5.js', 'js_src/src/components.js', 'js_src/src/models.js', 'js_src/src/chat.pre.js'],
+                src: ['js_src/src/md5.js', 'js_src/src/components.js', 'js_src/src/models.js', 'js_src/src/chat.js'],
                 dest: 'static/js/ChatPage.js'
             },
             frameworks: {
