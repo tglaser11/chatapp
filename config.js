@@ -1,38 +1,41 @@
+/**
+ * Created by tom on 2/1/15.
+ */
+
 var config = {
-	port: 3000,
-	secret: 'secret',
-  redisPort: 6379,
-  redisHost: 'localhost-redis',
-	redisUrl: 'redis://localhost-redis',
-	routes: {
-		login: '/account/login',
-		logout: '/account/logout',
-    register: '/account/register',
-    chat: '/chat',
-    facebookAuth: '/auth/facebook',
-    facebookAuthCallback: '/auth/facebook/callback',
-    googleAuth: '/auth/google',
-    googleAuthCallback: '/auth/google/callback'
-	},
-  google: {
-    clientID: 'Google-ID',
-    clientSecret: 'Google-Client-Secret'
-  },
-  host: 'http://habt.ice-ix.net:3000',
-  facebook: {
-    appID: 'Facebook-ID',
-    appSecret: 'Facebook-secret'
-  },
-  crypto: {
-    workFactor: 5000,
-    keylen: 32,
-    randomSize: 256
-  },
-  rabbitMQ: {
-	host: 'localhost-rabbitmq',
-	port: '5672',
-	exchange: 'packtchat.log'
-  }
+    port: process.env.PORT,
+    secret: process.env.SECRET,
+    redisPort: process.env.REDIS_PORT,
+    redisHost: process.env.REDIS_HOST,
+    routes: {
+        login: '/account/login',
+        logout: '/account/logout',
+        chat: '/chat',
+        register: '/account/register',
+        facebookAuth: '/auth/facebook',
+        facebookAuthCallback: '/auth/facebook/callback',
+        googleAuth: '/auth/google',
+        googleAuthCallback: '/auth/google/callback'
+    },
+    host: process.env.HOST,
+    facebook: {
+        appID: process.env.FACEBOOK_APPID,
+        appSecret: process.env.FACEBOOK_APPSECRET
+    },
+    google: {
+        clientID: process.env.GOOGLE_APPID,
+        clientSecret: process.env.GOOGLE_APPSECRET
+    },
+    crypto: {
+        workFactor: 5000,
+        keylen: 32,
+        randomSize: 256
+    },
+    rabbitMQ: {
+        host: process.env.RABBITMQ_HOST,
+        port: process.env.RABBITMQ_PORT,
+        exchange: process.env.RABBITMQ_EXCHANGE
+    }
 };
 
 module.exports = config;

@@ -1,7 +1,9 @@
 var PacktChat = window.PacktChat || {};
 PacktChat.Chat = function(el){
   var $root = $('#' + el),
-  socket = io.connect("http://habt.ice-ix.net:3000/packtchat"),
+  socket = io.connect('/* @echo SOCKETIO_URL */'),
+  // socket = io.connect("http://habt.ice-ix.net:3000/packtchat"),
+
   me = null,
   connected = false;
 
@@ -48,7 +50,7 @@ PacktChat.Chat = function(el){
     function roomFormEvent(message){
       roomsCollection.add({name: message.roomName, id: message.roomName});
       router.navigate('room/' + message.roomName, {trigger: true});
-    };
+    }
 
     function RoomSelection(){
       roomsCollection.sync('create', {name: 'lobby', id: 'lobby'});
@@ -64,11 +66,11 @@ PacktChat.Chat = function(el){
       userCollection.fetch({room: room});
       React.unmountComponentAtNode($root[0]);
       React.renderComponent(ChatView({users: userCollection, chats: chatCollection, room: room, me: me}), $root[0]);
-    };
+    }
 
     function DefaultRoute(){
       router.navigate('', {trigger: true});
-    };
+    }
 
     router.on('route:RoomSelection', RoomSelection);
     router.on('route:JoinRoom', JoinRoom);

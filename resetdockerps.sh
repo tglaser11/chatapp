@@ -1,3 +1,4 @@
+#!/bin/sh
 sudo docker stop chatapp
 sudo docker stop redis
 sudo docker stop rabbitmq
